@@ -19,22 +19,31 @@
     </head>
     <body>
         <br/>
-        <form  method="post">
-          <input type="text" name="tienbandau" />
-          <input type="text" name="lai" />
-          <input type="text" name="nam" />
-          <input type = "submit" id = "submit" value = "đọc"/>
+        <h3>Từ Điển Anh - Việt</h3>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+          <input type="text" name="search" placeholder="Nhập từ cần tìm"/>
+          <input type = "submit" id = "submit" value = "Tìm"/>
         </form>
         <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $tienbandau = $_POST["tienbandau"]; 
-    $lai = $_POST["lai"]; 
-    $nam = $_POST["nam"]; 
-}
-$giatrituonglai = $tienbandau + ($tienbandau * $lai * 0.1);   
-  echo $giatrituonglai;
-        
-        
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $searchword = $_POST["search"];
+                $flag = 0;
+                $dictionary = array(
+                        "hello"=>"xin chào",
+                        "how"=>"thế nào",
+                        "book"=>"quyển vở",
+                        "computer"=>"máy tính");
+                foreach($dictionary as $word => $description) {
+                    if($word == $searchword){
+                        echo "Từ: " . $word . ". <br/>Nghĩa của từ: " . $description;
+                        echo "<br/>";
+                        $flag = 1;
+                    }
+                }
+                if($flag == 0){
+                    echo "Không tìm thấy từ cần tra.";
+                }
+            }
         ?>
     </body>
 </html>
