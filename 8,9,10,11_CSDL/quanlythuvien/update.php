@@ -1,4 +1,6 @@
-
+<?php
+include "danhsach.php";
+?>
 <form method="post">
 <table>
     <tr>
@@ -14,18 +16,18 @@
         <td><input type="text" name="email" /></td>
     </tr>
     <tr>
-        <td><input type="submit" value="sualai" name="sua" /></td>
+        <td><input type="submit" value="sua lai" name="sua" /></td>
     </tr>
 </table>
 </form>
 <?php
 $conn = new mysqli('localhost','root','','quanlythuvien') or die('ket noi that bai');
-if(isset($_POST["sua"])){
+if(isset($_POST["sua"])&&isset($_REQUEST["ID"])){
  
     $tenhocvien = $_POST["tenhocvien"];
     $diachi = $_POST["diachi"];
     $email = $_POST["email"];
-    $query = "UPDATE `danhsachhocvien` SET `tenhocvien`='$tenhocvien',`diachi`='$diachi',`email`='$email'WHERE `mahocvien`='$maHV'";
+    $query = "UPDATE `danhsachhocvien` SET `tenhocvien`='$tenhocvien',`diachi`='$diachi',`email`='$email'WHERE `mahocvien`='$_REQUEST["ID"]'";
     mysqli_query($conn,$query) or die ("sua that bai");
 }
 ?>

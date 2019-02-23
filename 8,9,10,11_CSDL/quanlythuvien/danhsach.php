@@ -33,7 +33,7 @@
                      "<td>".$row['tenhocvien']."</td>".
                      "<td>".$row['diachi']."</td>".
                      "<td>".$row['email']."</td>".
-                     "<td><a href='update.php?id=$maHV'>sửa</a>"." | "."<a href='delete.php?id=$maHV1' >xóa</a></td>".
+                     "<td><a href='update.php?ID=$maHV'>sửa</a>"." | "."<a href='delete.php?ID=$maHV1' >xóa</a></td>".
                  "</tr>";
              
         }
