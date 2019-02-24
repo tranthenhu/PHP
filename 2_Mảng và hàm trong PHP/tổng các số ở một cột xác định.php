@@ -12,14 +12,14 @@
 <br/>
         <form  method="post">
           <input type="text" name="nhapmang" placeholder="VD:1,2,3,4" />
-          
+          <input type="text" name="cot" placeholder="cot muon tinh" />
           <input type = "submit" id = "submit" value = "tính"/>
         </form>
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $chuoi = $_POST["nhapmang"];
+        $cot = $_POST["cot"];
         trim($chuoi);
-    
         $arr1 = array();
         $arrtam = explode(",",$chuoi);
         $lenght = count($arrtam);
@@ -28,21 +28,17 @@
             array_push($arr1,$arrtam2);
     }  
     
-     $max = $arr1[0][0];
-     $hang = 0;
-     $cot = 0;
+     $sum = 0;
     foreach ($arr1 as $row => $arrtam2){
         foreach($arrtam2 as $col => $value){
             echo $value." ";
-          if ($value > $max ){
-              $hang = $row;
-              $cot = $col;
-              $max = $value;
+          if ($col == $cot ){
+              $sum += $value;
           }
         }
         echo "<br/>";
     }
-    echo "gia tri lon nhat la: ".$max." tai hang: ".$hang." va cot: ".$cot;
+    echo "tong cua cot ".$cot." la: ".$sum;
 }
 ?>
 

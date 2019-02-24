@@ -28,21 +28,17 @@
             array_push($arr1,$arrtam2);
     }  
     
-     $max = $arr1[0][0];
-     $hang = 0;
-     $cot = 0;
+     $sum = 0;
     foreach ($arr1 as $row => $arrtam2){
         foreach($arrtam2 as $col => $value){
             echo $value." ";
-          if ($value > $max ){
-              $hang = $row;
-              $cot = $col;
-              $max = $value;
+          if ($row === $col ){
+              $sum += $value;
           }
         }
         echo "<br/>";
     }
-    echo "gia tri lon nhat la: ".$max." tai hang: ".$hang." va cot: ".$cot;
+    echo "tong duong cheo la: ".$sum;
 }
 ?>
 
