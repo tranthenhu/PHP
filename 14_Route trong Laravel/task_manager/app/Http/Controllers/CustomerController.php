@@ -42,22 +42,22 @@ class CustomerController extends Controller
     {
         return view('modules.customer.update' );
     }
-    public function update(Request $request, $key) {
+    // public function update(Request $request, $key) {
       
-        $name = $request->name;
-        $email = $request->email;
-        $dob = $request->dob;
+    //     $name = $request->name;
+    //     $email = $request->email;
+    //     $dob = $request->dob;
  
-        $customer = $this->customers[$key];
+    //     $customer = $this->customers[$key];
  
        
-        $this->customers[$key]['name'] = $name;
-        $this->customers[$key]['email'] = $email;
-        $this->customers[$key]['bod'] = $dob;
+    //     $this->customers[$key]['name'] = $name;
+    //     $this->customers[$key]['email'] = $email;
+    //     $this->customers[$key]['bod'] = $dob;
  
  
-        return view('modules.customer.list', ['customers' => $this->customers]);
-    }
+    //     return view('modules.customer.list', ['customers' => $this->customers]);
+    // }
  
     public function create()
     {

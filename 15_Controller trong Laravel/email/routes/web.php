@@ -11,16 +11,5 @@
 |
 */
 
+Route::get('/','IndexController@index');
 
-
-Route::prefix('customer')->group(function() {
-    Route::get('/','CustomerController@index'); 
-    
-     Route::get('/update/{key?}','CustomerController@edit')->name('customer.edit');
-    // Route::get('/update/{key}','CustomerController@update')->name('customer.update');
-
-  
-  });
-
-
-  ?>
