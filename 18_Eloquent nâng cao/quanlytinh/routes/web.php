@@ -11,7 +11,6 @@
 |
 */
 
-
- route::get('/index','customer@index')->name('index');
- route::get('/them','customer@them')->name('them');
- route::post('/indexx','customer@add')->name('add');
+Route::get('/', function () {
+    return view('welcome');
+});

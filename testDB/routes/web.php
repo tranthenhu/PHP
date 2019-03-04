@@ -12,6 +12,8 @@
 */
 
 
- route::get('/index','customer@index')->name('index');
- route::get('/them','customer@them')->name('them');
- route::post('/indexx','customer@add')->name('add');
+
+route::get('/index','customer@index')->name('index');
+route::get('/create','customer@create')->name('create');
+route::post('/store','customer@store')->name('store');
+route::get('/edit','customer@edit')->name('edit');
