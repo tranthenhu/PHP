@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,14 +25,18 @@ Route::group(['prefix' => 'customers'], function () {
   Route::get('/{id}/edit','CustomerController@edit')->name('customers.edit');
   Route::post('/{id}/edit','CustomerController@update')->name('customers.update');
   Route::get('/{id}/destroy','CustomerController@destroy')->name('customers.destroy');
-  Route::get('/filter','CustomerController@filterByCity')->name('customers.filterByCity');
 });
 
 
-Route::group(['prefix' => 'cities'], function () {
-  Route::get('/','CityController@index')->name('cities.index');
-  Route::get('/create','CityController@create')->name('cities.create');
-  Route::get('/{id}/edit','CityController@edit')->name('cities.edit');
-  Route::get('/{id}/delete','CityController@destroy')->name('cities.destroy');
+
+
+
+//tao group route tasks
+Route::group(['prefix' => 'tasks'], function () {
+  Route::get('/','TaskController@index')->name('tasks.index');
+  Route::get('/create','TaskController@create')->name('tasks.create');
+  Route::post('/create','TaskController@store')->name('tasks.store');
+  Route::get('/{id}/edit','TaskController@edit')->name('tasks.edit');
+  Route::post('/{id}/edit','TaskController@update')->name('tasks.update');
+  Route::get('/{id}/destroy','TaskController@destroy')->name('tasks.destroy');
 });
-?>

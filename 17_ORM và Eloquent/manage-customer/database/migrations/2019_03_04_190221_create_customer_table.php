@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCitiesToCustomersTable extends Migration
+class CreateCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,13 @@ class AddCitiesToCustomersTable extends Migration
      * @return void
      */
     public function up(){
-        Schema::table('customers', function (Blueprint $table) {
-            $table->unsignedInteger('city_id')->after('email')->nullable();
-            $table->foreign('city_id')->references('id')->on('cities');
+
+        Schema::create('task', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('content');
+            $table->string('image');
+            $table->timestamps();
         });
       }
 
@@ -25,8 +29,6 @@ class AddCitiesToCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('task');
     }
 }
