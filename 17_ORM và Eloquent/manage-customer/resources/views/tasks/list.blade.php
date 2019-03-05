@@ -1,9 +1,9 @@
 @extends('home')
-@section('title', 'Danh sách khách hàng')
+@section('title', 'Danh sách Blog')
 @section('content')
      <div class="col-12">
            <div class="row">
-               <div class="col-12"><h1>Danh Sách Khách Hàng</h1></div>
+               <div class="col-12"><h1>Danh sách Blog</h1></div>
                <div class="col-12">
                    @if (Session::has('success'))
                       <p class="text-success">
@@ -14,9 +14,9 @@
           <table class="table table-striped">
           <thead>
           <tr>
-                <th scope="col">#</th>
-                <th scope="col">title</th>
-                <th scope="col">content</th>
+                <th scope="col">STT</th>
+                <th scope="col">Title</th>
+                <th scope="col">Content</th>
                
                 <th></th>
                 <th></th>
@@ -26,21 +26,21 @@
           @if(count($tasks) == 0)
           <tr><td colspan="4">Không có dữ liệu</td></tr>
           @else
-                @foreach($tasks as $key => $customer)
+                @foreach($tasks as $key => $task)
                 <tr>
                       <th scope="row">{{ ++$key }}</th>
-                      <td>{{ $customer->title }}</td>
-                      <td>{{ $customer->content }}</td>
+                      <td>{{ $task->title }}</td>
+                      <td>{{ $task->content }}</td>
               
                       <td>
-                        @if($customer->image)
-                        <img src="{{ asset('storage/'.$customer->image) }}" alt="" style="width: 100px; height: 100px">
+                        @if($task->image)
+                        <img src="{{ asset('storage/'.$task->image) }}" alt="" style="width: 100px; height: 100px">
                         @else
                             {{'Chưa có ảnh'}}
                         @endif
                     </td>
-                      <td><a href="{{ route('tasks.edit', $customer->id) }}">sửa</a></td>
-                      <td><a href="{{ route('tasks.destroy', $customer->id) }}" class="text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">xóa</a></td>
+                      <td><a href="{{ route('tasks.edit', $task->id) }}">[ sửa ]</a></td>
+                      <td><a href="{{ route('tasks.destroy', $task->id) }}" class="text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">[ xóa ]</a></td>
                 </tr>
                 @endforeach
           @endif

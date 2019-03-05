@@ -1,7 +1,7 @@
 
 @extends('home')
 
-@section('title', 'Cập nhật công viêc')
+@section('title', 'Cập nhật Blog')
 
 
 @section('content')
@@ -10,7 +10,7 @@
 
       <div class="col-md-12">
 
-          <h2>Cập nhật công việc</h2>
+          <h2>Cập nhật Blog</h2>
 
       </div>
 
@@ -22,7 +22,7 @@
 
               <div class="form-group">
 
-                  <label>title</label>
+                  <label>Title</label>
 
                   <input type="text" class="form-control" name="title" value="{{ $task->title }}" required>
 
@@ -30,7 +30,7 @@
 
               <div class="form-group">
 
-                  <label>Nội dung</label>
+                  <label>Content</label>
 
                   <textarea class="form-control" rows="3" name="content"  required>{{ $task->content }}</textarea>
 

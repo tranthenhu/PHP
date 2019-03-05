@@ -31,7 +31,7 @@ Route::group(['prefix' => 'customers'], function () {
 
 
 
-//tao group route tasks
+
 Route::group(['prefix' => 'tasks'], function () {
   Route::get('/','TaskController@index')->name('tasks.index');
   Route::get('/create','TaskController@create')->name('tasks.create');

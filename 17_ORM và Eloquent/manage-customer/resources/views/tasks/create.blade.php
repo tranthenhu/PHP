@@ -1,6 +1,6 @@
 @extends('home')
 
-@section('title', 'Thêm mới công viêc')
+@section('title', 'Thêm mới Blog')
 
 
 @section('content')
@@ -9,7 +9,7 @@
 
       <div class="col-md-12">
 
-          <h2>Thêm mới công việc</h2>
+          <h2>Thêm Blog mới </h2>
 
       </div>
 
@@ -21,7 +21,7 @@
 
               <div class="form-group">
 
-                  <label >Tên công việc</label>
+                  <label >Title</label>
 
                   <input type="text" class="form-control" name="title" required>
 
@@ -29,7 +29,7 @@
 
               <div class="form-group">
 
-                  <label >Nội dung</label>
+                  <label >Content</label>
 
                   <textarea class="form-control" rows="3" name="content" required></textarea>
 

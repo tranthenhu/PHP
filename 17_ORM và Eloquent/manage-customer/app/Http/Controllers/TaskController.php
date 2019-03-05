@@ -5,8 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use http\Env\Response;
 use Illuminate\Support\Facades\Storage;
-
-
 class TaskController extends Controller
 {
   /**
@@ -14,53 +12,44 @@ class TaskController extends Controller
    *
    * @return Response
    */
-
   public function index()
   {
-      $tasks = Task::paginate(2);
+      $tasks = Task::paginate(4);
      
       return view('tasks.list', compact('tasks'));
   }
-
   /**
    * Show the form for creating a new resource.
    *
    * @return Response
    */
-
   public function create()
   {
       return view('tasks.create');
   }
-
   /**
    * Store a newly created resource in storage.
    *
    * @return Response
    */
-
   public function store(Request $request)
   {
       $task = new Task();
       $task->title = $request->input('title');
       $task->content = $request->input('content');
-
-      //upload file
+      
       if ($request->hasFile('image')) {
           $image = $request->file('image');
           $path = $image->store('images', 'public');
           $task->image = $path;
       }
-
      
       $task->save();
-
-      //dung session de dua ra thong bao
+      
       Session::flash('success', 'Tạo mới thành công');
-      //tao moi xong quay ve trang danh sach task
+      
       return redirect()->route('tasks.index');
   }
-
   /**
    * Show the form for editing the specified resource.
    *
@@ -72,7 +61,6 @@ class TaskController extends Controller
       $task = Task::findOrFail($id);
       return view('tasks.edit', compact('task'));
   }
-
   /**
    * Update the specified resource in storage.
    *
@@ -84,30 +72,25 @@ class TaskController extends Controller
       $task = Task::findOrFail($id);
       $task->title = $request->input('title');
       $task->content = $request->input('content');
-
-      //cap nhat anh
+      
       if ($request->hasFile('image')) {
-
-          //xoa anh cu neu co
+          
           $currentImg = $task->image;
           if ($currentImg) {
               Storage::delete('/public/' . $currentImg);
           }
-          // cap nhat anh moi
+         
           $image = $request->file('image');
           $path = $image->store('images', 'public');
           $task->image = $path;
       }
-
      
       $task->save();
-
-      //dung session de dua ra thong bao
+    
       Session::flash('success', 'Cập nhật thành công');
-      //tao moi xong quay ve trang danh sach task
+    
       return redirect()->route('tasks.index');
   }
-
   /**
    * Remove the specified resource from storage.
    *
@@ -118,17 +101,14 @@ class TaskController extends Controller
   {
       $task = Task::findOrFail($id);
       $image = $task->image;
-
-      //delete image
+  
       if ($image) {
           Storage::delete('/public/' . $image);
       }
-
       $task->delete();
-
-      //dung session de dua ra thong bao
+     
       Session::flash('success', 'Xóa thành công');
-      //xoa xong quay ve trang danh sach task
+    
       return redirect()->route('tasks.index');
   }
 }
