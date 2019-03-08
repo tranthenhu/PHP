@@ -4,20 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCitiesTable extends Migration
+class Blog extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up(){
-        Schema::create('cities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+    public function up()
+    {
+        Schema::create('blog', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('title');
+            $table->string('contain');
+            $table->string('category_id');
             $table->timestamps();
         });
-      }
+    }
 
     /**
      * Reverse the migrations.
@@ -26,6 +29,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        //
     }
 }

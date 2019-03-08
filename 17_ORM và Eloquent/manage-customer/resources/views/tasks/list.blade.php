@@ -16,7 +16,9 @@
           <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Title</th>
+                
                 <th scope="col">Content</th>
+                <th scope="col">Anh</th>
                
                 <th></th>
                 <th></th>
