@@ -17,7 +17,7 @@ class Blog extends Migration
             $table->Increments('id');
             $table->string('title');
             $table->string('contain');
-            $table->string('category_id');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }

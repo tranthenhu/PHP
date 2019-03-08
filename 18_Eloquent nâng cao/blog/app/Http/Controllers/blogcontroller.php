@@ -16,7 +16,7 @@ class blogcontroller extends Controller
     {
        $blogs = blog::all();
        $categorys = category::all();
-       return view ('index',compact('blogs','categorys'));
+       return view ('index',compact(['blogs', 'categorys']));
     }
 
     

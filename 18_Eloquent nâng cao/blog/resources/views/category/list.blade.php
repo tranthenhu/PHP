@@ -18,7 +18,10 @@
      <a href="{{route('category.edit',$category->id)}}">sua</a> |
      <a href="{{route('category.destroy',$category->id)}}">xoa</a> ]
 </td>
+<td>
+</td>
 </tr>
 @endforeach
+<a href='{{route("index")}}' >quay ve blog</a>
 </tbody>
 </table>
