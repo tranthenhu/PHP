@@ -1,5 +1,12 @@
-<table>
+<table border='10px' >
 <thead>
+<tr>
+<form method='get' action="{{route('find')}}">
+@csrf
+  <input type='text' name='valuefind' >
+  <input type='submit' name='find' >
+  </form>
+</tr>
 <tr>
  <th>ID</th>
  <th>title</th>
@@ -19,10 +26,16 @@
           <td>
                [ <a href="{{route('show',$blog->id)}}">xem</a> | 
                <a href="{{route('edit',$blog->id)}}">sua</a> |
-               <a href="{{route('destroy',$blog->id)}}">xoa</a> ]
+               <a href="{{route('destroy',$blog->id)}}" >xoa</a> ]
           </td>
      </tr>
 @endforeach
-<a href='{{route("category.index")}}' >quay ve category</a>
+<tr>
+<td><a href='{{route("category.index")}}' >quay ve category</a>
+{{ $blogs->links() }}</td>
+<td><button onclick='window.history.go(-1)'>quay lai</button></td>
+</tr>
+
 </tbody>
+
 </table>

@@ -14,7 +14,7 @@ class blogcontroller extends Controller
    
     public function index()
     {
-       $blogs = blog::all();
+       $blogs = blog::paginate(2);
        $categorys = category::all();
        return view ('index',compact(['blogs', 'categorys']));
     }
@@ -70,5 +70,12 @@ class blogcontroller extends Controller
         $blogs = blog::findOrFail($id);
         $blogs->delete();
          return redirect()->route('index');
+    }
+    public function find(Request $request)
+    {
+        $finds = $request->valuefind;
+        $blogs = blog::find ($finds);
+        print_r($blogs);
+        // return view('showfind',compact('blogs'));
     }
 }

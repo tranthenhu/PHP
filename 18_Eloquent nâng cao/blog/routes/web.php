@@ -20,6 +20,7 @@
   route::get('/{id}/show','blogcontroller@show')->name('show');
   route::post('/{id}/update','blogcontroller@update')->name('update');
   route::get('/{id}/destroy','blogcontroller@destroy')->name('destroy');
+  route::get('/find','blogcontroller@find')->name('find');
 
 
 route::group(['prefix'=>'category'],function(){

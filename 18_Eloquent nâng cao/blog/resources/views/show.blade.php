@@ -16,6 +16,6 @@
 <td>{{$blogs->contain}}</td>
 
 </tr>
-
+<td><button onclick='window.history.go(-1)'>quay lai</button></td>
 </tbody>
 </table>
