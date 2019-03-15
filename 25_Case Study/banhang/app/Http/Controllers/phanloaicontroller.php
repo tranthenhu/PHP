@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\phanloai;
 use App\sanpham;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\validateLoaiSanPham;
 class phanloaicontroller extends Controller
 {
   
@@ -21,7 +21,7 @@ class phanloaicontroller extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(validateLoaiSanPham $request)
     {
         $phanloais = new phanloai();
         $phanloais->ten = $request->input('ten');
@@ -38,7 +38,7 @@ class phanloaicontroller extends Controller
     }
 
    
-    public function update(Request $request, $id)
+    public function update(validateLoaiSanPham $request, $id)
     {
        $phanloais = phanloai::findOrFail($id);
        $phanloais->ten = $request->input('ten');

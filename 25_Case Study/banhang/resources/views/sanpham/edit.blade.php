@@ -8,6 +8,11 @@
 <div class="container">
   <div class="row">
   <h4>sửa sản phẩm</h4>
+  @if ($errors->any())
+        @foreach($errors->all() as $nameError)
+            <p style="color:red">{{ $nameError }}</p>
+        @endforeach
+    @endif
  <div class="col col-md-2"></div>
     <div class="col col-md-8">
   <form method="post" action="{{route('sanpham.update',$sanphams->id)}}" enctype='multipart/form-data'>

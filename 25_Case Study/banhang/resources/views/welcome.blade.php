@@ -19,28 +19,40 @@
                         @endif
                 <div class="caption">
                     <h4 class="group inner list-group-item-heading">
-                    {{$sanpham->ten}}</h4>
-                    <p class="group inner list-group-item-text">
-                    {{$sanpham->phanloai->ten}}</p>
+                    tên: {{$sanpham->ten}}</h4>
+                    <h6 class="group inner list-group-item-text">
+                    loại: {{$sanpham->phanloai->ten}}</h6>
                     <div class="row">
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-6 col-md-12">
                             <p class="lead">
-                               {{$sanpham->gia}} vnđ</p>
+                               {{$sanpham->gia}}.vnđ</p>
                         </div>
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-6 col-md-12">
+                        
+                        <form method="post" action="{{route('giohang.add',$sanpham->id)}}">
+                        @csrf
+                        <div  align='right'>
+                             <td>
+                                <strong>số lượng </strong><input type="number" min="1" value="1" style="width: 40px; height: 20px" name="soluong">
+                             </td> 
+                             </div>
+                        <div class="row">
+
+                        <div class="col-md-4">
                         <a class="btn btn-success" href="{{route('sanpham.show',$sanpham->id)}}">Detail</a>
-                            <a class="btn btn-success" href="{{route('giohang.add',$sanpham->id)}}">Add to cart</a>
-                          
                         </div>
-                     
+                            <div  class="col-md-4">   
+                            <input type="submit" class="btn btn-success" style="width: 120px; height: 35px" value="Add to cart" >
+                            </div>
+                            </div>
+                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         @endforeach
       @endif
-    
 </div>  
-      
 </div>
-{{$sanphams->links()}}
+<div align='center'>{{$sanphams->links()}}</div>

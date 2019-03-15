@@ -12,6 +12,6 @@ class sanpham extends Model
         return $this->belongsTo('App\phanloai');
     }
     public function giohang(){
-        return $this->belongsTo('App\giohang');
+        return $this->hasMany('App\giohang');
     }
 }

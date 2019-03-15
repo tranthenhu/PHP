@@ -8,6 +8,13 @@
 <div class="container">
   <div class="row">
   <h4>chinh sua loai san pham</h4>
+  <div class="error-message">
+    @if ($errors->any())
+        @foreach($errors->all() as $nameError)
+            <p style="color:red">{{ $nameError }}</p>
+        @endforeach
+    @endif
+</div>
  <div class="col col-md-2"></div>
     <div class="col col-md-8">
   <form method="post" action="{{route('phanloai.update',$phanloais->id)}}" enctype='multipart/form-data'>
@@ -24,4 +31,3 @@
 
 </div>
 </div>
-{{$danhsachsanpham}}

@@ -8,7 +8,15 @@
 <div class="container">
   <div class="row">
   <h3>thêm sản phẩm</h3>
+  <div class="error-message">
+    @if ($errors->any())
+        @foreach($errors->all() as $nameError)
+            <p style="color:red">{{ $nameError }}</p>
+        @endforeach
+    @endif
+</div>
  <div class="col col-md-2"></div>
+
     <div class="col col-md-8">
   <form method="post" action="{{route('sanpham.store')}}" enctype='multipart/form-data'>
   @csrf

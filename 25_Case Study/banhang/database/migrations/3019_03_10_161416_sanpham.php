@@ -16,7 +16,7 @@ class Sanpham extends Migration
         Schema::create('sanpham', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ten');
-            $table->string('gia');
+            $table->integer('gia');
             $table->string('image');
             $table->string('chitiet');   
             $table->integer('phanloai_id')->unsigned();

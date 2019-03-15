@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/','sanphamicontroller@main')->name('sanpham.main');
 
 Route::group(['prefix'=>'sanpham'],function (){
   Route::get('/','sanphamicontroller@index')->name('sanpham.index');
@@ -35,7 +35,9 @@ Route::group(['prefix'=>'phanloai'],function (){
 
 
 Route::group(['prefix'=>'giohang'],function (){
-  Route::get('/add/{id}','giohangcontroller@add')->name('giohang.add');
   Route::get('/index','giohangcontroller@index')->name('giohang.index');
+  Route::post('/add/{id}','giohangcontroller@add')->name('giohang.add');
+  Route::post('/bill','giohangcontroller@bill')->name('giohang.bill');
+  Route::get('/destroy/{id}','giohangcontroller@destroy')->name('giohang.destroy');
     
 });

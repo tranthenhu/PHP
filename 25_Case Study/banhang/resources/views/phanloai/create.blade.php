@@ -8,6 +8,13 @@
 <div class="container">
   <div class="row">
   <h4>thêm loai san pham moi</h4>
+  <div class="error-message">
+    @if ($errors->any())
+        @foreach($errors->all() as $nameError)
+            <p style="color:red">{{ $nameError }}</p>
+        @endforeach
+    @endif
+</div>
  <div class="col col-md-2"></div>
     <div class="col col-md-8">
   <form method="post" action="{{route('phanloai.store')}}" enctype='multipart/form-data'>

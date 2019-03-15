@@ -15,16 +15,28 @@ class giohangcontroller extends Controller
      */
     public function index()
     {
-        $sanphams = giohang::all();
-        return view('showFind',compact('sanphams'));
+        $giohangs = giohang::all();
+        $tonggiatien = 0;
+        foreach($giohangs as $giohang){
+            $soluong = $giohang->soluong;
+            $giatien = $giohang->sanpham->gia;
+            $tonggia1sanpham = $soluong * $giatien;
+            $tonggiatien = $tonggiatien +$tonggia1sanpham;
+            
+        }
+        return view('giohang.index',compact('giohangs','tonggiatien'));
     }
+
+    
    
-    public function add($id)
+    public function add(Request $request, $id)
     {
        $sanphams = sanpham::findOrFail($id);
        $giohangs = new giohang();
        $giohangs->ten = $sanphams->ten;
+       $giohangs->soluong = $request->input('soluong');
        $giohangs->sanpham_id = $sanphams->id;
+       
        $giohangs->save();
        return redirect()->route('sanpham.index');
     }
@@ -35,9 +47,9 @@ class giohangcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function bill(Request $request)
     {
-        //
+    
     }
 
     /**
@@ -93,6 +105,8 @@ class giohangcontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $giohangs = giohang::findOrFail($id);
+        $giohangs->delete();
+        return redirect()->route('giohang.index');
     }
 }

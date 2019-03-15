@@ -5,7 +5,7 @@ use App\sanpham;
 use App\phanloai;
 use App\giohang;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\FormExampleRequest;
 class sanphamicontroller extends Controller
 {
     /**
@@ -37,7 +37,7 @@ class sanphamicontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FormExampleRequest  $request)
     {
         $sanphams = new sanpham();
         $sanphams->ten  = $request->input('ten');
@@ -86,7 +86,7 @@ class sanphamicontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormExampleRequest $request, $id)
     {
         $sanphams = sanpham::findOrFail($id);
         $sanphams->ten  = $request->input('ten');
@@ -122,6 +122,11 @@ class sanphamicontroller extends Controller
         $ten=str_replace(' ', '%', $ten);
         $sanphams=sanpham::where('ten','like','%'.$ten.'%')->get();
         return view('showFind',compact('sanphams'));
+    }
+     public function main()
+    {
+        $sanphams = sanpham::all();
+        return view('main',compact('sanphams'));
     }
 }
 

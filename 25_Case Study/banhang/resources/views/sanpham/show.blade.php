@@ -64,7 +64,7 @@
 							<span class="color blue"></span>
 						</h5>
 						<div class="action">
-               <a class="add-to-cart btn btn-default" type="button" href="">add to cart</a>
+               <a class="add-to-cart btn btn-default" type="button" href="{{route('giohang.add',$sanphams->id)}}">add to cart</a>
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.edit',$sanphams->id)}}">sửa</a>
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>

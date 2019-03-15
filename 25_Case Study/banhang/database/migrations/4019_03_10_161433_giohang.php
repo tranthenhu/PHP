@@ -16,6 +16,7 @@ class Giohang extends Migration
         Schema::create('giohang', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ten');
+            $table->integer('soluong');
             $table->integer('sanpham_id')->unsigned();
             $table->foreign('sanpham_id')
             ->references('id')
