@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','sanphamicontroller@main')->name('sanpham.main');
+
 
 Route::group(['prefix'=>'sanpham'],function (){
+  Route::get('/main','sanphamicontroller@main')->name('sanpham.main');
   Route::get('/','sanphamicontroller@index')->name('sanpham.index');
   Route::get('/create','sanphamicontroller@create')->name('sanpham.create');
   Route::post('/store','sanphamicontroller@store')->name('sanpham.store');

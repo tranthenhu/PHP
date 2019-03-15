@@ -63,12 +63,24 @@
 							<span class="color green"></span>
 							<span class="color blue"></span>
 						</h5>
+						<form method="post" action="{{route('giohang.add',$sanphams->id)}}">
+                        @csrf
+                         <div  align='right'>
+                             <td>
+                                <strong>số lượng </strong><input type="number" min="1" value="1" style="width: 40px; height: 20px" name="soluong">
+                             </td> 
+                         </div>
+                         <div>
+                            &nbsp
+                         </div>
 						<div class="action">
-               <a class="add-to-cart btn btn-default" type="button" href="{{route('giohang.add',$sanphams->id)}}">add to cart</a>
+               <input class="add-to-cart btn btn-default" type="submit" href="{{route('giohang.add',$sanphams->id)}}" value="Add to cart">
+							 <form>
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.edit',$sanphams->id)}}">sửa</a>
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
+					
 					</div>
 				</div>
 			</div>

@@ -11,7 +11,7 @@
     <table class="table table-striped custab">
     <thead>
          <tr>
-         <h3>danh sach loai san pham<h3>
+          <strong> <h2>danh sach loai san pham<h2></strong>
          </tr>
     <a href="{{route('phanloai.create')}}" class="btn btn-primary btn-xs pull-right"><b>+</b> them loai san pham moi</a>
         <tr>
@@ -25,7 +25,7 @@
     </thead>
       @foreach ($phanloais as $key => $phanloai)
             <tr>
-                <td>{{++$key}}</td>
+                <td><strong> {{++$key}}</strong></td>
                 <td>{{$phanloai->ten}}</td>
                 <td>{{$phanloai->created_at}}</td>
                 <td>{{$phanloai->updated_at}}</td>

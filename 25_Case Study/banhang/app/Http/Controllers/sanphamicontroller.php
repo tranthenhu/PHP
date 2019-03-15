@@ -124,7 +124,8 @@ class sanphamicontroller extends Controller
         return view('showFind',compact('sanphams'));
     }
      public function main()
-    {
+    {   
+        $i = 0;
         $sanphams = sanpham::all();
         return view('main',compact('sanphams'));
     }
