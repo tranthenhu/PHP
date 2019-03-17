@@ -26,18 +26,22 @@
                         <div class="panel-body">
                         @foreach($giohangs as $giohang)
                                 <div class="col-md-12">
-                                    <strong>tên: {{$giohang->ten}}</strong>
-                                    <div class="pull-right"><span>số lượng: {{$giohang->soluong}}</span><span> cái</span></div>
+                                    <strong>tên: </strong>  {{$giohang->ten}} *{{$giohang->soluong}}
+                                    <div class="pull-right"><span> {{($giohang->sanpham->gia)*($giohang->soluong)}}</span><span>.vnđ</span></div>
                                 </div>
                                 @endforeach
+                                <div>
+                                  &nbsp
+                                </div>
                                 <div class="col-md-12">
                                     <strong>Tổng Giá Tiền: </strong>
                                     <div class="pull-right"><span> <strong>{{$tonggiatien}} </strong></span><span> <strong>.vnđ </strong></span></div>
                                     <hr>
                                 </div>
+                                <div class="col-md-12">
                                 
-                                <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
-                                
+                                  <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+                                </div>
                         </div>
                         
                     </div>

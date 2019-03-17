@@ -40,5 +40,5 @@ Route::group(['prefix'=>'giohang'],function (){
   Route::post('/add/{id}','giohangcontroller@add')->name('giohang.add');
   Route::post('/bill','giohangcontroller@bill')->name('giohang.bill');
   Route::get('/destroy/{id}','giohangcontroller@destroy')->name('giohang.destroy');
-    
+  
 });
