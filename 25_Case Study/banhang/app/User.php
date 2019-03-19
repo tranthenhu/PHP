@@ -1,7 +1,10 @@
 <?php
 
 namespace App;
-
+use App\giohang;
+use App\phanloai;
+use App\User;
+use App\sanpham;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role'
     ];
 
     /**
@@ -36,4 +39,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+  
+    public function sanphams()
+    {
+        return $this->belongsToMany(sanpham::class, 'user_sanpham')->withPivot('soluong');
+    }
 }

@@ -5,7 +5,7 @@ use App\giohang;
 use App\sanpham;
 use App\phanloai;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class giohangcontroller extends Controller
 {
     /**
@@ -15,29 +15,20 @@ class giohangcontroller extends Controller
      */
     public function index()
     {
-        $giohangs = giohang::all();
-        $tonggiatien = 0;
-        foreach($giohangs as $giohang){
-            $soluong = $giohang->soluong;
-            $giatien = $giohang->sanpham->gia;
-            $tonggia1sanpham = $soluong * $giatien;
-            $tonggiatien = $tonggiatien +$tonggia1sanpham;
-            
-        }
-        return view('giohang.index',compact('giohangs','tonggiatien'));
+        $user = auth()->user();	
+        $giohangs = $user->sanphams;
+        
+        return view('giohang.index', compact('giohangs'));
     }
 
     
    
     public function add(Request $request, $id)
     {
-       $sanphams = sanpham::findOrFail($id);
-       $giohangs = new giohang();
-       $giohangs->ten = $sanphams->ten;
-       $giohangs->soluong = $request->input('soluong');
-       $giohangs->sanpham_id = $sanphams->id;
-       
-       $giohangs->save();
+       $user = auth()->user();	
+       $sanpham= sanpham::findOrFail($id);
+       $soluongs = $request->input('soluong');
+       $user->sanphams()->attach($sanpham,['soluong'=>$soluongs]);
        return redirect()->route('sanpham.index');
     }
 
@@ -94,7 +85,7 @@ class giohangcontroller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -103,10 +94,10 @@ class giohangcontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($giohang)
     {
-        $giohangs = giohang::findOrFail($id);
-        $giohangs->delete();
+        $user = auth()->user();	
+        $user->detach($giohang);
         return redirect()->route('giohang.index');
     }
 }

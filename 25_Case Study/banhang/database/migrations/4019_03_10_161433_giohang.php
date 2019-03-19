@@ -13,11 +13,15 @@ class Giohang extends Migration
      */
     public function up()
     {
-        Schema::create('giohang', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('ten');
-            $table->integer('soluong');
+        Schema::create('user_sanpham', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned();
             $table->integer('sanpham_id')->unsigned();
+            $table->integer('soluong')->unsigned();
+        
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
             $table->foreign('sanpham_id')
             ->references('id')
             ->on('sanpham')
@@ -33,6 +37,6 @@ class Giohang extends Migration
      */
     public function down()
     {
-        schema::dropIfExists('sanpham');
+        schema::dropIfExists('user_sanpham');
     }
 }

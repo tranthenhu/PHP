@@ -26,8 +26,8 @@
                         <div class="panel-body">
                         @foreach($giohangs as $giohang)
                                 <div class="col-md-12">
-                                    <strong>tên: </strong>  {{$giohang->ten}} *{{$giohang->soluong}}
-                                    <div class="pull-right"><span> {{($giohang->sanpham->gia)*($giohang->soluong)}}</span><span>.vnđ</span></div>
+                                    <strong>tên: </strong>  {{$giohang->ten}} 
+                                    <div class="pull-right"><span> {{$giohang->gia}}</span><span>.vnđ</span></div>
                                 </div>
                                 @endforeach
                                 <div>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Tổng Giá Tiền: </strong>
-                                    <div class="pull-right"><span> <strong>{{$tonggiatien}} </strong></span><span> <strong>.vnđ </strong></span></div>
+                                    <div class="pull-right"><span> <strong>000</strong></span><span> <strong>.vnđ </strong></span></div>
                                     <hr>
                                 </div>
                                 <div class="col-md-12">
@@ -69,8 +69,8 @@
     							<tr>
     								<td class="col-md-3">
     								    <div class="media">
-                                        @if($giohang->sanpham->image)
-    								          <img class="group list-group-image" src="{{ asset('storage/'.$giohang->sanpham->image) }}" alt="" 
+                                        @if($giohang->image)
+    								          <img class="group list-group-image" src="{{ asset('storage/'.$giohang->image) }}" alt="" 
                                                style="width: 72px; height: 72px;">
                                               @else
                                                   {{'Chưa có ảnh'}}
@@ -81,11 +81,11 @@
     								         </div>
     								    </div>
     								</td>
-                                    <td class="text-left" > {{$giohang->ten}}</td>
-                                    <td class="text-center" > {{$giohang->soluong}}</td>
-    								<td class="text-center">{{$giohang->sanpham->gia}}</td>
                                     
-    								<td class="text-right"><a href="{{route('giohang.destroy',$giohang->id)}}" type="button" class="btn btn-danger">Remove</a></td> 
+                                    <td class="text-left" >{{asdsddsfsad}}</td>
+    								<td class="text-center">{{$giohang->gia}}</td>
+                                    
+    								<td class="text-right"><a href="{{route('giohang.destroy',$giohang)}}" type="button" class="btn btn-danger">Remove</a></td> 
     							</tr>
                                 @endforeach
     						</tbody>
