@@ -8,22 +8,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FormExampleRequest;
 class sanphamicontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $sanphams = sanpham::paginate(8);
         return view('welcome',compact('sanphams'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         $phanloais = phanloai::all();
@@ -31,12 +23,7 @@ class sanphamicontroller extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(FormExampleRequest  $request)
     {
         $sanphams = new sanpham();
@@ -54,24 +41,14 @@ class sanphamicontroller extends Controller
         return redirect()->route('sanpham.index');  
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
        $sanphams = sanpham::findOrFail($id);
        return view('sanpham.show',compact('sanphams'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         $phanloais = phanloai::all();
@@ -79,13 +56,7 @@ class sanphamicontroller extends Controller
         return view('sanpham.edit',compact('sanphams','phanloais'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(FormExampleRequest $request, $id)
     {
         $sanphams = sanpham::findOrFail($id);
@@ -103,12 +74,7 @@ class sanphamicontroller extends Controller
         return redirect()->route('sanpham.index');  
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function delete($id)
     {
         $sanphams = sanpham::findOrFail($id);
@@ -123,11 +89,10 @@ class sanphamicontroller extends Controller
         $sanphams=sanpham::where('ten','like','%'.$ten.'%')->get();
         return view('showFind',compact('sanphams'));
     }
+
      public function main()
     {   
-        $i = 0;
-        $sanphams = sanpham::all();
-        return view('main',compact('sanphams'));
+        return view('main');
     }
 }
 

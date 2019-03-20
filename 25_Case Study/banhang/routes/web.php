@@ -11,9 +11,9 @@
 |
 */
 Auth::routes();
+Route::get('/','sanphamicontroller@main')->name('sanpham.main');
 
 Route::group(['prefix'=>'sanpham'],function (){
-  Route::get('/main','sanphamicontroller@main')->name('sanpham.main');
   Route::get('/','sanphamicontroller@index')->name('sanpham.index')->middleware('auth');
   Route::get('/create','sanphamicontroller@create')->name('sanpham.create')->middleware('auth');
   Route::post('/store','sanphamicontroller@store')->name('sanpham.store')->middleware('auth');

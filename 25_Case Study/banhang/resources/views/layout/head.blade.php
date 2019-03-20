@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row row1">
             <ul class="largenav pull-right">
-                <!-- <li class="upper-links"><a class="links" href="{{route('sanpham.main')}}">trang chu</a></li> -->
+                <li class="upper-links"><a class="links" href="{{route('sanpham.main')}}">trang chu</a></li> 
                 <li class="upper-links"><a class="links" href="{{route('sanpham.index')}}">danh sach san pham</a></li>
                 <li class="upper-links"><a class="links" href="{{route('phanloai.index')}}">loại sản phẩm</a></li>
                 <li class="upper-links"><a class="links" href="{{route('sanpham.create')}}">them san pham </a></li>

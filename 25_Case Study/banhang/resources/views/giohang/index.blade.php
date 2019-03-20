@@ -24,10 +24,11 @@
                             <h4>Review Order</h4>
                         </div>
                         <div class="panel-body">
+                        
                         @foreach($giohangs as $giohang)
                                 <div class="col-md-12">
-                                    <strong>tên: </strong>  {{$giohang->ten}} 
-                                    <div class="pull-right"><span> {{$giohang->gia}}</span><span>.vnđ</span></div>
+                                    <strong>sản phẩm: </strong> {{$giohang->pivot->soluong}}x {{$giohang->ten}} 
+                                    <div class="pull-right"><span> {{($giohang->gia)*($giohang->pivot->soluong)}}</span><span>.vnđ</span></div>
                                 </div>
                                 @endforeach
                                 <div>
@@ -35,7 +36,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <strong>Tổng Giá Tiền: </strong>
-                                    <div class="pull-right"><span> <strong>000</strong></span><span> <strong>.vnđ </strong></span></div>
+                                    <div class="pull-right"><span> <strong>{{$tonggiatien}}</strong></span><span> <strong>.vnđ </strong></span></div>
                                     <hr>
                                 </div>
                                 <div class="col-md-12">
@@ -55,7 +56,7 @@
                            <table class="table borderless">
     						<thead>
                                 <tr>
-        							<td ><strong>Your Cart</strong></td>
+        							<td ><strong>Sản phẩm</strong></td>
                                     <td class="text-left"><strong>Tên</strong></td>
         							<td class="text-center"><strong>Số lượng</strong> </td>
         							<td class="text-center"><strong>Giá/1 (vnđ)</strong></td>
@@ -82,9 +83,9 @@
     								    </div>
     								</td>
                                     
-                                    <td class="text-left" >{{asdsddsfsad}}</td>
-    								<td class="text-center">{{$giohang->gia}}</td>
-                                    
+                                    <td class="text-left" >{{$giohang->ten}}</td>
+    								<td class="text-center">{{$giohang->pivot->soluong}}</td>
+                                    <td class="text-center">{{$giohang->gia}}</td>
     								<td class="text-right"><a href="{{route('giohang.destroy',$giohang)}}" type="button" class="btn btn-danger">Remove</a></td> 
     							</tr>
                                 @endforeach
