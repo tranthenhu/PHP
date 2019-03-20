@@ -24,7 +24,7 @@
   </div>
   <div class="form-group required">
     <label for="exampleInputPassword1" class='control-label'>giá</label>
-    <input type="number" name='gia' min="1000" class="form-control"  value="{{$sanphams->gia}}">
+    <input type="number" name='gia' min="100" class="form-control"  value="{{$sanphams->gia}}">
   </div>
   <div class="form-group required">
     <label for="exampleSelect1" class='control-label'>loại</label>

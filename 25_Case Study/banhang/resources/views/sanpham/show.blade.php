@@ -65,9 +65,9 @@
 						</h5>
 						<form method="post" action="{{route('giohang.add',$sanphams->id)}}">
                         @csrf
-                         <div  align='right'>
+                         <div  align='left'>
                              <td>
-                                <strong>số lượng </strong><input type="number" min="1" value="1" style="width: 40px; height: 20px" name="soluong">
+                                <strong>số lượng </strong><input type="number" min="1" value="1" style="width: 54px; height: 20px" name="soluong">
                              </td> 
                          </div>
                          <div>
@@ -75,9 +75,11 @@
                          </div>
 						<div class="action">
                <input class="add-to-cart btn btn-default" type="submit" href="{{route('giohang.add',$sanphams->id)}}" value="Add to cart">
-							 <form>
+              </form>
+							@if (Auth::user()->role === 1)
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.edit',$sanphams->id)}}">sửa</a>
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
+							 @endif
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					
