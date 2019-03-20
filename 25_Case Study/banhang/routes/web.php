@@ -11,6 +11,7 @@
 |
 */
 Auth::routes();
+
 Route::get('/','sanphamicontroller@main')->name('sanpham.main');
 
 Route::group(['prefix'=>'sanpham'],function (){
@@ -31,7 +32,6 @@ Route::group(['prefix'=>'phanloai'],function (){
   Route::get('/edit/{id}','phanloaicontroller@edit')->name('phanloai.edit')->middleware('auth');
   Route::post('/update/{id}','phanloaicontroller@update')->name('phanloai.update')->middleware('auth');
   Route::get('/destroy/{id}','phanloaicontroller@destroy')->name('phanloai.destroy')->middleware('auth');
-
 });
 
 
@@ -39,8 +39,7 @@ Route::group(['prefix'=>'giohang'],function (){
   Route::get('/index','giohangcontroller@index')->name('giohang.index')->middleware('auth');
   Route::post('/add/{id}','giohangcontroller@add')->name('giohang.add')->middleware('auth');
   Route::post('/bill','giohangcontroller@bill')->name('giohang.bill')->middleware('auth');
-  Route::get('/destroy','giohangcontroller@destroy')->name('giohang.destroy')->middleware('auth');
-  
+  Route::get('/destroy/{giohang}','giohangcontroller@destroy')->name('giohang.destroy')->middleware('auth');
 });
 
 

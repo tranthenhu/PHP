@@ -34,7 +34,7 @@ class giohangcontroller extends Controller
     public function destroy($giohang)
     {
         $user = auth()->user();	
-        $user->detach($giohang);
+        $user->sanphams()->detach($giohang);
         return redirect()->route('giohang.index');
     }
 }
