@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
 class CheckRole
 {
     /**
@@ -15,10 +14,10 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-         if (Auth::check())
+         if (auth()->check())
        {
 
-          if(Auth::user()->role === 1 )
+          if(auth()->user()->role === 1 )
           {
                return $next($request);
           }

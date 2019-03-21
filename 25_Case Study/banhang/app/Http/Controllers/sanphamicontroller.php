@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\sanpham;
 use App\phanloai;
 use App\giohang;
+use App\bannerImage;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormExampleRequest;
 class sanphamicontroller extends Controller
@@ -92,7 +93,8 @@ class sanphamicontroller extends Controller
 
      public function main()
     {   
-        return view('main');
+        $bannerImages = bannerImage::all();
+        return view('main',compact('bannerImages'));
     }
 }
 

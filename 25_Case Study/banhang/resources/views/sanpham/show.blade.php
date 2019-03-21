@@ -78,7 +78,7 @@
               </form>
 							@if (Auth::user()->role === 1)
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.edit',$sanphams->id)}}">sửa</a>
-               <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
+               <a class="add-to-cart btn btn-danger" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
 							 @endif
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
