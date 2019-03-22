@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call(user::class);
         $this->call(phanloai::class);
          $this->call(sanpham::class);
+         $this->call(banner::class);
+         
          
     }
 }

@@ -82,9 +82,41 @@
 							 @endif
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
-					
+						<form method="post" action="{{route('comment.add',$sanphams->id)}}">
+						@csrf
+										<textarea placeholder="comment here.."  name='comment'></textarea>
+									
+										<button type="submit" class="btn btn-success green" ><i class="fa fa-share"></i> comment	</button>
+									</form>
 					</div>
 				</div>
+			   <div class="container">
+             <div class="row">
+                <div class="col-sm-12">
+								@if(count($comments) > 0)	
+                <h3> <strong>Comment</strong> </h3>
+                </div>
+             </div>
+           @foreach($comments as $comment)
+              <div class="col-sm-5">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                       <strong>tên: {{$comment->username}}</strong> <span class="text-muted"></span>
+                     </div>
+                 <div class="panel-body">
+                    {{$comment->comment}}
+                 </div>
+								 @if(Auth::user()->id === $comment->user_id)
+								     <div align="right">
+                       <a class="add-to-cart btn btn-danger" type="button"  href="{{route('comment.delete',$comment->id)}}">xóa</a>
+							      </div>
+										@endif
+                </div>
+              </div>
+            @endforeach
+						@else
+					  <strong>chưa có bình luận nào.</strong>
+           @endif
 			</div>
 		</div>
 	</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\sanpham;
 use App\phanloai;
 use App\giohang;
+use App\comment;
 use App\bannerImage;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormExampleRequest;
@@ -46,7 +47,8 @@ class sanphamicontroller extends Controller
     public function show($id)
     {
        $sanphams = sanpham::findOrFail($id);
-       return view('sanpham.show',compact('sanphams'));
+       $comments = comment::where('sanpham_id',$id)->get();
+       return view('sanpham.show',compact('sanphams','comments'));
     }
 
     

@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(sanpham::class, 'user_sanpham')->withPivot('soluong');
     }
+
+    public function sanphamsComment()
+    {
+        return $this->belongsToMany(sanpham::class, 'user_sanpham_comment')->withPivot('comment','username');
+    }
 }

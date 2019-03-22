@@ -18,4 +18,9 @@ class sanpham extends Model
     {
         return $this->belongsToMany(User::class, 'user_sanpham')->withPivot('soluong');
     }
+
+    public function usersComment()
+    {
+        return $this->belongsToMany(User::class, 'user_sanpham_comment')->withPivot('comment','username');
+    }
 }

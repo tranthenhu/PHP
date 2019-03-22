@@ -43,8 +43,13 @@ Route::group(['prefix'=>'giohang'],function (){
 });
 
 Route::group(['prefix'=>'banner'],function (){
-  Route::get('/index','bannerImagecontroller@index')->name('banner.index')->middleware('auth');
-  Route::get('/create','bannerImagecontroller@create')->name('banner.create')->middleware('auth');
-  Route::post('/store','bannerImagecontroller@store')->name('banner.store')->middleware('auth');
-  Route::get('/delete/{id}','bannerImagecontroller@delete')->name('banner.delete')->middleware('auth');
+  Route::get('/index','bannerImagecontroller@index')->name('banner.index')->middleware(['auth','checkrole']);
+  Route::get('/create','bannerImagecontroller@create')->name('banner.create')->middleware(['auth','checkrole']);
+  Route::post('/store','bannerImagecontroller@store')->name('banner.store')->middleware(['auth','checkrole']);
+  Route::get('/delete/{id}','bannerImagecontroller@delete')->name('banner.delete')->middleware(['auth','checkrole']);
+});
+
+Route::group(['prefix'=>'comment'],function (){
+  Route::post('/add/{id}','commentController@add')->name('comment.add')->middleware('auth');
+  Route::get('/delete/{id}','commentController@delete')->name('comment.delete')->middleware('auth');
 });
