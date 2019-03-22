@@ -61,8 +61,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkrole' => \App\Http\Middleware\CheckRole::class,
+        'checkAdmin' => \App\Http\Middleware\checkAdmin::class,
     ];
-
+    
     /**
      * The priority-sorted list of middleware.
      *

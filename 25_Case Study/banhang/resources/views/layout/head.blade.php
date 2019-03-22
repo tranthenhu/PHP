@@ -14,10 +14,15 @@
             <ul class="largenav pull-right">
                 <li class="upper-links"><a class="links" href="{{route('sanpham.main')}}"><h5><strong>Trang chủ</strong></h5></a></li> 
                 <li class="upper-links"><a class="links" href="{{route('sanpham.index')}}"><h5><strong>Danh sách sản phẩm</strong></h5></a></li>
-                @if (Auth::user()->role === 1)
-                <li class="upper-links"><a class="links" href="{{route('banner.index')}}"><h5><strong>hình banner</strong></h5></a></li>
-                <li class="upper-links"><a class="links" href="{{route('phanloai.index')}}"><h5><strong>loại sản phẩm</strong></h5></a></li>
-                <li class="upper-links"><a class="links" href="{{route('sanpham.create')}}"><h5><strong>Thêm sản phẩm</strong> </h5></a></li>
+                @if (Auth::user()->role > 1)
+                <li class="upper-links"><a class="links" href="{{route('role.index')}}"><h5><strong>Role</strong></h5></a></li>
+                   <li class="upper-links"><a class="links" href="{{route('banner.index')}}"><h5><strong>hình banner</strong></h5></a></li>
+                   <li class="upper-links"><a class="links" href="{{route('phanloai.index')}}"><h5><strong>loại sản phẩm</strong></h5></a></li>
+                   <li class="upper-links"><a class="links" href="{{route('sanpham.create')}}"><h5><strong>Thêm sản phẩm</strong> </h5></a></li>
+                  @elseif (Auth::user()->role > 0)
+                   <li class="upper-links"><a class="links" href="{{route('banner.index')}}"><h5><strong>hình banner</strong></h5></a></li>
+                   <li class="upper-links"><a class="links" href="{{route('phanloai.index')}}"><h5><strong>loại sản phẩm</strong></h5></a></li>
+                   <li class="upper-links"><a class="links" href="{{route('sanpham.create')}}"><h5><strong>Thêm sản phẩm</strong> </h5></a></li>
                 @endif
                 <li class="upper-links">
                     <a class="links" href="http://clashhacks.in/">

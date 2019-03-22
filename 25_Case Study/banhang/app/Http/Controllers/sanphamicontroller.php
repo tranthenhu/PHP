@@ -6,6 +6,7 @@ use App\phanloai;
 use App\giohang;
 use App\comment;
 use App\bannerImage;
+use App\ratting;
 use Illuminate\Http\Request;
 use App\Http\Requests\FormExampleRequest;
 class sanphamicontroller extends Controller
@@ -45,10 +46,20 @@ class sanphamicontroller extends Controller
 
     
     public function show($id)
-    {
+    {  $sum = 0;
+       $avgRatting = 0;
+       $rattings = ratting::where('sanpham_id',$id)->get();
+       if(count($rattings) > 0){
+        foreach($rattings as $key => $ratting){
+            $sum += $ratting->ratting;
+            $key++;
+        }
+        $avgRatting = $sum / $key;
+      }
+      
        $sanphams = sanpham::findOrFail($id);
        $comments = comment::where('sanpham_id',$id)->get();
-       return view('sanpham.show',compact('sanphams','comments'));
+       return view('sanpham.show',compact('sanphams','comments','avgRatting'));
     }
 
     
@@ -97,6 +108,27 @@ class sanphamicontroller extends Controller
     {   
         $bannerImages = bannerImage::all();
         return view('main',compact('bannerImages'));
+    }
+
+    public function ratting(Request $request,$id)
+    {   
+        $kiemtra = true;
+        $user = auth()->user();	
+        $sanphams= sanpham::findOrFail($id);
+        $rattingTable = ratting::all();
+        $rattings = $request->input('ratting');
+        foreach($rattingTable as $ratting){
+            if($ratting->user_id == $user->id && $ratting->sanpham_id == $id){
+            $kiemtra = false;
+            }
+        }
+       if($kiemtra === false){
+           $user->sanphamsRatting()->detach($sanphams,['ratting'=>$rattings]);
+            $user->sanphamsRatting()->attach($sanphams,['ratting'=>$rattings]);
+          } else {
+               $user->sanphamsRatting()->attach($sanphams,['ratting'=>$rattings]);
+          }
+     return redirect()->back();
     }
 }
 

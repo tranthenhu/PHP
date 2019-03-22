@@ -5,6 +5,7 @@ use App\giohang;
 use App\phanloai;
 use App\User;
 use App\sanpham;
+use App\ratting;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,5 +49,10 @@ class User extends Authenticatable
     public function sanphamsComment()
     {
         return $this->belongsToMany(sanpham::class, 'user_sanpham_comment')->withPivot('comment','username');
+    }
+
+    public function sanphamsRatting()
+    {
+        return $this->belongsToMany(sanpham::class, 'user_sanpham_ratting')->withPivot('ratting');
     }
 }

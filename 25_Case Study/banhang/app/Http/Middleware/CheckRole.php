@@ -17,7 +17,7 @@ class CheckRole
          if (auth()->check())
        {
 
-          if(auth()->user()->role === 1 )
+          if(auth()->user()->role > 0 )
           {
                return $next($request);
           }

@@ -23,6 +23,7 @@ Route::group(['prefix'=>'sanpham'],function (){
   Route::post('/update/{id}','sanphamicontroller@update')->name('sanpham.update')->middleware(['auth','checkrole']);
   Route::get('/delete/{id}','sanphamicontroller@delete')->name('sanpham.delete')->middleware(['auth','checkrole']);
   Route::post('/find','sanphamicontroller@find')->name('sanpham.find')->middleware('auth');
+  Route::post('/ratting/{id}','sanphamicontroller@ratting')->name('sanpham.ratting')->middleware('auth');
 });
 
 Route::group(['prefix'=>'phanloai'],function (){
@@ -53,3 +54,11 @@ Route::group(['prefix'=>'comment'],function (){
   Route::post('/add/{id}','commentController@add')->name('comment.add')->middleware('auth');
   Route::get('/delete/{id}','commentController@delete')->name('comment.delete')->middleware('auth');
 });
+
+Route::group(['prefix'=>'role'],function (){
+  Route::get('/index','RoleController@index')->name('role.index')->middleware(['auth','checkAdmin']);
+  Route::get('/edit/{id}','RoleController@edit')->name('role.edit')->middleware(['auth','checkAdmin']);
+  Route::post('/update/{id}','RoleController@update')->name('role.update')->middleware(['auth','checkAdmin']);
+  Route::get('/delete/{id}','RoleController@delete')->name('role.delete')->middleware(['auth','checkAdmin']);
+});
+

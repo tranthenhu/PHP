@@ -41,17 +41,19 @@
 						<h3 class="product-title">{{$sanphams->ten}}</h3>
 						<div class="rating">
 							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
+						 ratting:	{{$avgRatting}}<span class="fa fa-star checked"></span>
 							</div>
-							<span class="review-no">41 reviews</span>
+							<span class="review-no"></span>
 						</div>
-						<p class="product-description">{{$sanphams->chitiet}}</p>
+						<p class="product-description"><strong>chi tiet: </strong>{{$sanphams->chitiet}}</p>
 						<h4 class="price">current price: <span>{{$sanphams->gia}} vnđ</span></h4>
-						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+						<p class="vote"><strong>cho điểm đánh giá sản phẩm </strong> 
+						<form method='post' action="{{route('sanpham.ratting',$sanphams->id)}}">
+						@csrf
+						<input type="number" min="1" max="10" style="width: 60px; height: 28px" value='5' name="ratting">
+						<input type="submit" value="đánh giá" >
+						</form>
+						</p>
 						<h5 class="sizes">sizes:
 							<span class="size" data-toggle="tooltip" title="small">s</span>
 							<span class="size" data-toggle="tooltip" title="medium">m</span>
@@ -76,11 +78,11 @@
 						<div class="action">
                <input class="add-to-cart btn btn-default" type="submit" href="{{route('giohang.add',$sanphams->id)}}" value="Add to cart">
               </form>
-							@if (Auth::user()->role === 1)
+							@if (Auth::user()->role > 0)
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.edit',$sanphams->id)}}">sửa</a>
                <a class="add-to-cart btn btn-danger" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
 							 @endif
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+							
 						</div>
 						<form method="post" action="{{route('comment.add',$sanphams->id)}}">
 						@csrf
