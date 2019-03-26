@@ -78,11 +78,12 @@
 						<div class="action">
                <input class="add-to-cart btn btn-default" type="submit" href="{{route('giohang.add',$sanphams->id)}}" value="Add to cart">
               </form>
+							@if(Auth::check())
 							@if (Auth::user()->role > 0)
                <a class="add-to-cart btn btn-default" type="button"  href="{{route('sanpham.edit',$sanphams->id)}}">sửa</a>
                <a class="add-to-cart btn btn-danger" type="button"  href="{{route('sanpham.delete',$sanphams->id)}}">xóa</a>
 							 @endif
-							
+							@endif
 						</div>
 						<form method="post" action="{{route('comment.add',$sanphams->id)}}">
 						@csrf
@@ -108,11 +109,13 @@
                  <div class="panel-body">
                     {{$comment->comment}}
                  </div>
+								 @if(Auth::check())
 								 @if(Auth::user()->id === $comment->user_id)
 								     <div align="right">
                        <a class="add-to-cart btn btn-danger" type="button"  href="{{route('comment.delete',$comment->id)}}">xóa</a>
 							      </div>
 										@endif
+									@endif
                 </div>
               </div>
             @endforeach

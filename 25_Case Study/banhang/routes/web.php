@@ -15,10 +15,10 @@ Auth::routes();
 Route::get('/','sanphamicontroller@main')->name('sanpham.main');
 
 Route::group(['prefix'=>'sanpham'],function (){
-  Route::get('/','sanphamicontroller@index')->name('sanpham.index')->middleware('auth');
+  Route::get('/','sanphamicontroller@index')->name('sanpham.index');
   Route::get('/create','sanphamicontroller@create')->name('sanpham.create')->middleware(['auth','checkrole']);
   Route::post('/store','sanphamicontroller@store')->name('sanpham.store')->middleware(['auth','checkrole']);
-  Route::get('/show/{id}','sanphamicontroller@show')->name('sanpham.show')->middleware('auth');
+  Route::get('/show/{id}','sanphamicontroller@show')->name('sanpham.show');
   Route::get('/edit/{id}','sanphamicontroller@edit')->name('sanpham.edit')->middleware(['auth','checkrole']);
   Route::post('/update/{id}','sanphamicontroller@update')->name('sanpham.update')->middleware(['auth','checkrole']);
   Route::get('/delete/{id}','sanphamicontroller@delete')->name('sanpham.delete')->middleware(['auth','checkrole']);

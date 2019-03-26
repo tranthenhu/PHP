@@ -14,6 +14,7 @@
             <ul class="largenav pull-right">
                 <li class="upper-links"><a class="links" href="{{route('sanpham.main')}}"><h5><strong>Trang chủ</strong></h5></a></li> 
                 <li class="upper-links"><a class="links" href="{{route('sanpham.index')}}"><h5><strong>Danh sách sản phẩm</strong></h5></a></li>
+                @if (Auth::check())
                 @if (Auth::user()->role > 1)
                 <li class="upper-links"><a class="links" href="{{route('role.index')}}"><h5><strong>Role</strong></h5></a></li>
                    <li class="upper-links"><a class="links" href="{{route('banner.index')}}"><h5><strong>hình banner</strong></h5></a></li>
@@ -24,6 +25,7 @@
                    <li class="upper-links"><a class="links" href="{{route('phanloai.index')}}"><h5><strong>loại sản phẩm</strong></h5></a></li>
                    <li class="upper-links"><a class="links" href="{{route('sanpham.create')}}"><h5><strong>Thêm sản phẩm</strong> </h5></a></li>
                 @endif
+               
                 <li class="upper-links">
                     <a class="links" href="http://clashhacks.in/">
                         <svg class="" width="16px" height="12px" style="overflow: visible;">
@@ -47,7 +49,11 @@
                              </ul>
                  </li>
             </ul>
+            @else
+            <li class="upper-links"><a class="links" href="{{route('login')}}"><h5><strong>LOGIN</strong></h5></a></li>
+            @endif
         </div>
+        
         <div class="row row2">
             <div class="col-sm-2">
                 <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">FI </span></h2>
@@ -70,11 +76,13 @@
                     <svg class="cart-svg " width="16 " height="16 " viewBox="0 0 16 16 ">
                         <path d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86 " fill="#fff "></path>
                     </svg>Cart 
+                    @if (Auth::check())
                     @if(count(auth()->user()->sanphams) > 0)
                     @foreach(auth()->user()->sanphams as $key => $sanpham)
                              
                       @endforeach
                      ({{++$key}})
+                    @endif
                     @endif
                 </a>
                 </div>
